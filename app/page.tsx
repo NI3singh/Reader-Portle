@@ -2,7 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { FileText, Folder, Download, Home, ChevronRight, Loader2, FileType, Eye } from 'lucide-react';
-import { FileItem, BreadcrumbItem } from '@/types';
+
+interface FileItem {
+  path: string;
+  type: 'file' | 'directory';
+  size?: number;
+  lfs?: {
+    size?: number;
+  };
+}
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
 
 export default function HomePage() {
   const [files, setFiles] = useState<FileItem[]>([]);
